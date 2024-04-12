@@ -1,4 +1,6 @@
 import { Sidebar } from './_components/sidebar/index'
+import { OrgSidebar } from './_components/org-sidebar'
+import { Navbar } from "@/app/(dashboard)/_components/navbar"
 
 interface DashboardLayoutProps {
     children: React.ReactNode
@@ -17,11 +19,12 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
                     gap-x-3
                     h-full
                 ">
+                    <OrgSidebar/>
                     <div className="
                         h-full
                         flex-1
                     ">
-                        {/*{Add Navbar}*/ }
+                        <Navbar/>
                         { children }
                     </div>
                 </div>

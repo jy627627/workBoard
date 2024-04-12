@@ -1,3 +1,6 @@
+import { NewButton } from "@/app/(dashboard)/_components/sidebar/new-button";
+import { List } from "@/app/(dashboard)/_components/sidebar/list";
+
 export const Sidebar = () => {
     return (
         <aside
@@ -15,7 +18,8 @@ export const Sidebar = () => {
                 text-white
             "
         >
-            Side
+            <List />
+            <NewButton/>
         </aside>
     )
 }
