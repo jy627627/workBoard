@@ -2,6 +2,7 @@
 
 
 import { UserButton } from "@clerk/nextjs";
+import { SearchInput } from "@/app/(dashboard)/_components/search-input";
 
 export const Navbar = () => {
     return (
@@ -22,7 +23,7 @@ export const Navbar = () => {
                     bg-yellow-500
                 "
             >
-                Search
+                <SearchInput/>
             </div>
             <UserButton/>
         </div>

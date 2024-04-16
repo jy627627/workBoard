@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { OrganizationSwitcher } from "@clerk/nextjs";
 import { LayoutDashboard, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useSearchParams } from 'next/navigation'
 
 const font = Poppins({
     subsets: [ 'latin' ],
@@ -16,6 +17,9 @@ const font = Poppins({
 
 
 export const OrgSidebar = () => {
+
+    const searchParams = useSearchParams()
+    const favorites = searchParams.get('favorites')
 
     return (
         <div
@@ -27,7 +31,6 @@ export const OrgSidebar = () => {
                 w-[206px]
                 pl-5
                 pt-5
-                bg-red-500
             "
         >
             <Link href='/'>
@@ -82,7 +85,7 @@ export const OrgSidebar = () => {
                 "
             >
                 <Button
-                    variant="ghost"
+                    variant={ favorites ? 'ghost' : 'secondary' }
                     asChild
                     size="lg"
                     className="
@@ -104,7 +107,7 @@ export const OrgSidebar = () => {
                     </Link>
                 </Button>
                 <Button
-                    variant="ghost"
+                    variant={ favorites ? 'secondary' : 'ghost' }
                     asChild
                     size="lg"
                     className="
@@ -114,10 +117,10 @@ export const OrgSidebar = () => {
                         w-full
                     "
                 >
-                    <Link href={{
+                    <Link href={ {
                         pathname: '/',
                         query: { favorites: true }
-                    }}>
+                    } }>
                         <Star
                             className="
                                 h-4
