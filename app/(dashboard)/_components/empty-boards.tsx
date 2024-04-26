@@ -8,6 +8,7 @@ import { useOrganization } from "@clerk/nextjs";
 
 import { api } from "@/convex/_generated/api";
 import { useApiMutation } from "@/hooks/use-api-mutation";
+import { toast } from "sonner";
 
 export const EmptyBoards = () => {
 
@@ -23,6 +24,10 @@ export const EmptyBoards = () => {
             orgId: organization.id,
             title: 'Untitled'
         })
+            .then((id) => {
+                toast.success('Board created')
+            })
+            .catch(() => toast.error('Failed to create board'))
     }
 
     return (
