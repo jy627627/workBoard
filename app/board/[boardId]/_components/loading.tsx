@@ -1,8 +1,10 @@
+'use client'
+
 import { Loader } from 'lucide-react'
 
-import { Info } from './info'
-import { Participants } from "@/app/board/[boardId]/_components/participants";
-import { Toolbar } from "@/app/board/[boardId]/_components/toolbar";
+import { InfoSkeleton } from './info'
+import { ParticipantsSkeleton } from "@/app/board/[boardId]/_components/participants";
+import { ToolbarSkeleton } from "@/app/board/[boardId]/_components/toolbar";
 
 
 export const Loading = () => {
@@ -27,9 +29,9 @@ export const Loading = () => {
                     animate-spin
                 "
             />
-            <Info.Skeleton/>
-            <Participants.Skeleton/>
-            <Toolbar.Skeleton/>
+            <InfoSkeleton/>
+            <ParticipantsSkeleton/>
+            <ToolbarSkeleton/>
         </main>
     )
 }

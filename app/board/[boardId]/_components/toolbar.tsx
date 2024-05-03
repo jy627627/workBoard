@@ -1,7 +1,25 @@
-import { Skeleton } from "@/components/ui/skeleton";
-import { Info } from "@/app/board/[boardId]/_components/info";
+import { ToolButton } from "@/app/board/[boardId]/_components/too-button";
+import { Circle, MousePointer2, Pencil, Redo2, Square, StickyNote, Type, Undo2 } from "lucide-react";
 
-export const Toolbar = () => {
+import { CanvasMode, CanvasState } from '@/types/canvas'
+
+interface ToolBarProps {
+    canvasState: CanvasState
+    setCanvasState: (newState: CanvasState) => void
+    undo: () => void
+    redo: () => void
+    canUndo: boolean
+    canRedo: boolean
+}
+
+export const Toolbar = ({
+    canvasState,
+    setCanvasState,
+    undo,
+    redo,
+    canUndo,
+    canRedo
+}: ToolBarProps) => {
     return (
         <div
             className="
@@ -26,10 +44,45 @@ export const Toolbar = () => {
                     shadow-md
                 "
             >
-                <div>Pencil</div>
-                <div>Square</div>
-                <div>Pen</div>
-                <div>Circle</div>
+                <ToolButton
+                    label="Select"
+                    icon={ MousePointer2 }
+                    onClick={ () => setCanvasState({mode: CanvasMode.None})}
+                    isActive={ canvasState.mode === CanvasMode.None }
+                />
+                <ToolButton
+                    label="Text"
+                    icon={ Type }
+                    onClick={ () => setCanvasState({mode: CanvasMode.Inserting})}
+                    isActive={ canvasState.mode === CanvasMode.Inserting }
+                />
+                <ToolButton
+                    label="Sticky note"
+                    icon={ StickyNote }
+                    onClick={ () => setCanvasState({mode: CanvasMode.Inserting})}
+                    isActive={ canvasState.mode === CanvasMode.Inserting }
+                />
+                <ToolButton
+                    label="Rectangle"
+                    icon={ Square }
+                    onClick={ () => {
+                    } }
+                    isActive={ false }
+                />
+                <ToolButton
+                    label="Ellipse"
+                    icon={ Circle }
+                    onClick={ () => {
+                    } }
+                    isActive={ false }
+                />
+                <ToolButton
+                    label="Pen"
+                    icon={ Pencil }
+                    onClick={ () => {
+                    } }
+                    isActive={ false }
+                />
             </div>
             <div
                 className="
@@ -42,14 +95,24 @@ export const Toolbar = () => {
                     shadow-md
                 "
             >
-                <div>Undo</div>
-                <div>Redo</div>
+                <ToolButton
+                    label="Undo"
+                    icon={ Undo2 }
+                    onClick={ undo }
+                    isDisabled={ !canUndo }
+                />
+                <ToolButton
+                    label="Redo"
+                    icon={ Redo2 }
+                    onClick={ redo }
+                    isDisabled={ !canRedo }
+                />
             </div>
         </div>
     )
 }
 
-Toolbar.Skeleton = function ToolbarSkeleton() {
+export const ToolbarSkeleton = () => {
     return (
         <div
             className="
