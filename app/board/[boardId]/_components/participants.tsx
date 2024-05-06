@@ -3,7 +3,7 @@
 import { useOthers, useSelf } from "@/liveblocks.config";
 import { UserAvatar } from './user-avatar'
 import { connectionIdToColor } from "@/lib/utils";
-import { info } from "autoprefixer";
+
 
 
 const MAX_SHOW_USERS = 2
