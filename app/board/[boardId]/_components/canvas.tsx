@@ -116,7 +116,6 @@ export const Canvas = ({
         insertLayer
     ])
 
-
     return (
         <main
             className="
