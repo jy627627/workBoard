@@ -20,7 +20,11 @@ export const create = mutation({
         title: v.string()
     },
     handler: async (ctx, args) => {
+
+
         const identity = await ctx.auth.getUserIdentity()
+
+        console.log(' %c 🐱✨ identity: ', 'font-size:20px;background-color: #42b983;color:#fff;', identity)
 
         if (!identity) {
             throw new Error('Unauthorized')
